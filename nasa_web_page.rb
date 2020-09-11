@@ -28,6 +28,14 @@ def build_web_page(data)
     File.write('index.html', html)
 end
 
+def photos_count(data)
+    counts = Hash.new
+    data.each do |x| 
+        counts[x["camera"]["name"]] = 1 + counts[x["camera"]["name"]].to_i
+    end
+    return counts
+end
+
 data = request("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=fNCrLqXdQ0Qz9FhLonr9kIdx3ARngwhm133HBXpX")
 data = data["photos"]
 build_web_page(data)
