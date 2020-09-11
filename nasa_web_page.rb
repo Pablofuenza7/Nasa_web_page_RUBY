@@ -19,11 +19,11 @@ end
 
 
 def build_web_page(data)
-    html = "<html>\n<head>\n</head>\n<body>\n<ul>\n"
+    html = "<html>\n\n\n<head>\n\n</head>\n<body>\n<ul>\n"
     data.each do |photo|
         html += "\t<li><img src='" + photo["img_src"] + "'></li>\n"
     end
-    html += "</ul>\n</body>\n</html>"
+    html += "</ul>\n\n\n</body>\n\n\n\n</html>"
 
     File.write('index.html', html)
 end
