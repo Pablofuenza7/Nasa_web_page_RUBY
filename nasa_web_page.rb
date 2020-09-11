@@ -18,37 +18,14 @@ def request(url_requested)
 end
 
 
-def build_web_page(test)
-
-    html = ""
-    
-    f = File.new('index.html', 'w')
-    f.write("<html>\n")
-    f.write("<head>\n")
-    f.write("</head>\n")
-    f.write("<body>\n")
-    f.write("<ul>\n")
-
-
-
-    test['photos'].each do |i|
-        i.each do |k, v|
-          if k == 'img_src'
-            html += ("<li><img src=\"#{v}\"></li>\n")
-          end
-    File.write('index.html',html)
-
-        end
-
-
+def build_web_page(data)
+    html = "<html>\n<head>\n</head>\n<body>\n<ul>\n"
+    data.each do |photo|
+        html += "\t<li><img src='" + photo["img_src"] + "'></li>\n"
     end
-    
-    f.write("</ul>\n")
-    f.write("</body>\n")
-    f.write("</html>\n")    
-    f.close
+    html += "</ul>\n</body>\n</html>"
 
-   
+    File.write('index.html', html)
 end
 
 data = request("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=fNCrLqXdQ0Qz9FhLonr9kIdx3ARngwhm133HBXpX")
