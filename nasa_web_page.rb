@@ -40,3 +40,5 @@ data = request("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?
 data = data["photos"]
 
 build_web_page(data)
+
+photos_count(data)
